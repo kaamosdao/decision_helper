@@ -1,15 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:decision_helper/UI/screens/result/widgets/body_page_view.dart';
 import 'package:decision_helper/UI/screens/result/widgets/bottom_bar.dart';
-import 'package:flutter/material.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class ResultScreen extends StatefulWidget {
+  const ResultScreen({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<ResultScreen> createState() => _ResultScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _ResultScreenState extends State<ResultScreen> {
   int _selectedIndex = 0;
   final PageController _pageController = PageController();
 
