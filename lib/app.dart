@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:decision_helper/UI/screens/add_cons/add_cons.dart';
-import 'package:decision_helper/UI/screens/add_decision/add_decision.dart';
-import 'package:decision_helper/UI/screens/add_pros/add_pros.dart';
-import 'package:decision_helper/UI/screens/result/result_screen.dart';
+import 'package:decision_helper/UI/screens/add_cons.dart';
+import 'package:decision_helper/UI/screens/add_decision.dart';
+import 'package:decision_helper/UI/screens/add_pros.dart';
+import 'package:decision_helper/UI/screens/result_screen.dart';
 import 'package:decision_helper/routes.dart';
 
 class App extends StatelessWidget {

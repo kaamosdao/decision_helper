@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:decision_helper/UI/screens/result/widgets/body_page_view.dart';
-import 'package:decision_helper/UI/screens/result/widgets/bottom_bar.dart';
+import 'package:decision_helper/UI//widgets/body_page_view.dart';
+import 'package:decision_helper/UI//widgets/bottom_bar.dart';
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen({Key? key}) : super(key: key);
