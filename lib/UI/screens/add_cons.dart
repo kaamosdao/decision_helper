@@ -24,42 +24,58 @@ class _AddConsScreenState extends State<AddConsScreen> {
         onTap: () {
           FocusScope.of(context).unfocus();
         },
-        child: Center(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('type your pros here'),
-                const SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  width: 300,
-                  height: 80,
-                  child: TextFormField(
-                    onFieldSubmitted: (value) {
-                      final isValidForm = _formKey.currentState!.validate();
-                      if (isValidForm) {
-                        debugPrint('Add pros: $value');
-                      }
-                    },
-                    autofocus: true,
-                    controller: consController,
-                    maxLength: 50,
-                    decoration: const InputDecoration(
-                      labelText: 'Pros',
-                      border: OutlineInputBorder(),
+        child: Padding(
+          padding: const EdgeInsets.only(top: 250, left: 50, right: 50),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Text('type your cons here'),
+                    const SizedBox(
+                      height: 20,
                     ),
-                    validator: (value) =>
-                        value == '' ? 'Should not be empty' : null,
-                  ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 80,
+                      child: TextFormField(
+                        onFieldSubmitted: (value) {
+                          final isValidForm = _formKey.currentState!.validate();
+                          if (isValidForm) {
+                            debugPrint('Add cons: $value');
+                          }
+                        },
+                        autofocus: true,
+                        controller: consController,
+                        maxLength: 50,
+                        decoration: const InputDecoration(
+                          labelText: 'Cons',
+                          border: OutlineInputBorder(),
+                        ),
+                        validator: (value) =>
+                            value == '' ? 'Should not be empty' : null,
+                      ),
+                    ),
+                    NextButton(
+                      onPressed: onPressed,
+                    ),
+                  ],
                 ),
-                NextButton(
-                  onPressed: onPressed,
-                )
-              ],
-            ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text('Cons $index'),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),
