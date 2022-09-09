@@ -42,7 +42,7 @@ class _ProsPageState extends State<ProsPage> {
                           debugPrint('Add pros: $value');
                         }
                       },
-                      autofocus: true,
+                      // autofocus: true,
                       controller: prosController,
                       maxLength: 50,
                       decoration: const InputDecoration(

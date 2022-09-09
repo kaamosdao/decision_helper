@@ -42,7 +42,7 @@ class _ConsPageState extends State<ConsPage> {
                           debugPrint('Add cons: $value');
                         }
                       },
-                      autofocus: true,
+                      // autofocus: true,
                       controller: consController,
                       maxLength: 50,
                       decoration: const InputDecoration(

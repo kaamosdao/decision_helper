@@ -1,6 +1,7 @@
-import 'package:decision_helper/UI/widgets/next_button.dart';
+import 'package:decision_helper/bloc/decision_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:decision_helper/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddDecisionScreen extends StatefulWidget {
   const AddDecisionScreen({Key? key}) : super(key: key);
@@ -12,9 +13,11 @@ class AddDecisionScreen extends StatefulWidget {
 class _AddDecisionScreenState extends State<AddDecisionScreen> {
   final decisionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  void onPressed() {
+  void onFieldSubmitted(value) {
     final isValidForm = _formKey.currentState!.validate();
+    final decisionBloc = context.read<DecisionBloc>();
     if (isValidForm) {
+      decisionBloc.add(AddDecisionEvent(decision: value));
       Navigator.of(context).pushNamed(AppRoutes.pros);
     }
   }
@@ -42,12 +45,7 @@ class _AddDecisionScreenState extends State<AddDecisionScreen> {
                   width: 300,
                   height: 80,
                   child: TextFormField(
-                    onFieldSubmitted: (value) {
-                      final isValidForm = _formKey.currentState!.validate();
-                      if (isValidForm) {
-                        debugPrint('Add decision: $value');
-                      }
-                    },
+                    onFieldSubmitted: onFieldSubmitted,
                     autofocus: true,
                     controller: decisionController,
                     maxLength: 50,
@@ -59,7 +57,6 @@ class _AddDecisionScreenState extends State<AddDecisionScreen> {
                         value == '' ? 'Should not be empty' : null,
                   ),
                 ),
-                NextButton(onPressed: onPressed),
               ],
             ),
           ),
