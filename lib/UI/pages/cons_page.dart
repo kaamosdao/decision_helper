@@ -1,4 +1,7 @@
+import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/models/cons_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ConsPage extends StatefulWidget {
   const ConsPage({Key? key}) : super(key: key);
@@ -10,6 +13,29 @@ class ConsPage extends StatefulWidget {
 class _ConsPageState extends State<ConsPage> {
   final consController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  late FocusNode consFocusNode;
+
+  void onFieldSubmitted(value) {
+    final isValidForm = _formKey.currentState!.validate();
+    if (isValidForm) {
+      final decisionBloc = context.read<DecisionBloc>();
+      decisionBloc.add(AddConsEvent(cons: Cons(name: value)));
+      consController.clear();
+    }
+    consFocusNode.requestFocus();
+  }
+
+  @override
+  void initState() {
+    consFocusNode = FocusNode();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    consFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +62,9 @@ class _ConsPageState extends State<ConsPage> {
                     width: double.infinity,
                     height: 80,
                     child: TextFormField(
-                      onFieldSubmitted: (value) {
-                        final isValidForm = _formKey.currentState!.validate();
-                        if (isValidForm) {
-                          debugPrint('Add cons: $value');
-                        }
-                      },
+                      onFieldSubmitted: onFieldSubmitted,
                       // autofocus: true,
+                      focusNode: consFocusNode,
                       controller: consController,
                       maxLength: 50,
                       decoration: const InputDecoration(
@@ -57,11 +79,16 @@ class _ConsPageState extends State<ConsPage> {
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Cons $index'),
+              child: BlocBuilder<DecisionBloc, DecisionState>(
+                builder: (context, state) {
+                  return ListView.builder(
+                    itemCount: state.cons.length,
+                    itemBuilder: (context, index) {
+                      final cons = state.cons[index];
+                      return ListTile(
+                        title: Text(cons.name),
+                      );
+                    },
                   );
                 },
               ),

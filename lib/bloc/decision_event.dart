@@ -14,3 +14,19 @@ class AddDecisionEvent extends DecisionEvent {
   @override
   List<Object> get props => [decision];
 }
+
+class AddProsEvent extends DecisionEvent {
+  final Pros pros;
+  const AddProsEvent({required this.pros});
+
+  @override
+  List<Object> get props => [pros];
+}
+
+class AddConsEvent extends DecisionEvent {
+  final Cons cons;
+  const AddConsEvent({required this.cons});
+
+  @override
+  List<Object> get props => [cons];
+}

@@ -1,4 +1,7 @@
+import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/models/pros_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProsPage extends StatefulWidget {
   const ProsPage({Key? key}) : super(key: key);
@@ -10,6 +13,29 @@ class ProsPage extends StatefulWidget {
 class _ProsPageState extends State<ProsPage> {
   final prosController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  late FocusNode prosFocusNode;
+
+  void onFieldSubmitted(value) {
+    final isValidForm = _formKey.currentState!.validate();
+    if (isValidForm) {
+      final decisionBloc = context.read<DecisionBloc>();
+      decisionBloc.add(AddProsEvent(pros: Pros(name: value)));
+      prosController.clear();
+    }
+    prosFocusNode.requestFocus();
+  }
+
+  @override
+  void initState() {
+    prosFocusNode = FocusNode();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    prosFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +62,9 @@ class _ProsPageState extends State<ProsPage> {
                     width: double.infinity,
                     height: 80,
                     child: TextFormField(
-                      onFieldSubmitted: (value) {
-                        final isValidForm = _formKey.currentState!.validate();
-                        if (isValidForm) {
-                          debugPrint('Add pros: $value');
-                        }
-                      },
+                      onFieldSubmitted: onFieldSubmitted,
                       // autofocus: true,
+                      focusNode: prosFocusNode,
                       controller: prosController,
                       maxLength: 50,
                       decoration: const InputDecoration(
@@ -57,11 +79,16 @@ class _ProsPageState extends State<ProsPage> {
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Pros $index'),
+              child: BlocBuilder<DecisionBloc, DecisionState>(
+                builder: (context, state) {
+                  return ListView.builder(
+                    itemCount: state.pros.length,
+                    itemBuilder: (context, index) {
+                      final pros = state.pros[index];
+                      return ListTile(
+                        title: Text(pros.name),
+                      );
+                    },
                   );
                 },
               ),

@@ -1,6 +1,9 @@
 import 'package:decision_helper/UI/widgets/next_button.dart';
+import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/models/cons_model.dart';
 import 'package:flutter/material.dart';
 import 'package:decision_helper/routes.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddConsScreen extends StatefulWidget {
   const AddConsScreen({Key? key}) : super(key: key);
@@ -12,8 +15,32 @@ class AddConsScreen extends StatefulWidget {
 class _AddConsScreenState extends State<AddConsScreen> {
   final consController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  late FocusNode consFocusNode;
+
   void onPressed() {
     Navigator.of(context).pushNamed(AppRoutes.result);
+  }
+
+  void onFieldSubmitted(value) {
+    final isValidForm = _formKey.currentState!.validate();
+    if (isValidForm) {
+      final decisionBloc = context.read<DecisionBloc>();
+      decisionBloc.add(AddConsEvent(cons: Cons(name: value)));
+      consController.clear();
+    }
+    consFocusNode.requestFocus();
+  }
+
+  @override
+  void initState() {
+    consFocusNode = FocusNode();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    consFocusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -42,13 +69,9 @@ class _AddConsScreenState extends State<AddConsScreen> {
                       width: double.infinity,
                       height: 80,
                       child: TextFormField(
-                        onFieldSubmitted: (value) {
-                          final isValidForm = _formKey.currentState!.validate();
-                          if (isValidForm) {
-                            debugPrint('Add cons: $value');
-                          }
-                        },
+                        onFieldSubmitted: onFieldSubmitted,
                         autofocus: true,
+                        focusNode: consFocusNode,
                         controller: consController,
                         maxLength: 50,
                         decoration: const InputDecoration(
@@ -66,11 +89,16 @@ class _AddConsScreenState extends State<AddConsScreen> {
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text('Cons $index'),
+                child: BlocBuilder<DecisionBloc, DecisionState>(
+                  builder: (context, state) {
+                    return ListView.builder(
+                      itemCount: state.cons.length,
+                      itemBuilder: (context, index) {
+                        final cons = state.cons[index];
+                        return ListTile(
+                          title: Text(cons.name),
+                        );
+                      },
                     );
                   },
                 ),
