@@ -1,3 +1,4 @@
+import 'package:decision_helper/UI/widgets/dismissible_cons.dart';
 import 'package:decision_helper/UI/widgets/forms/add_cons_form.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ConsPage extends StatelessWidget {
   const ConsPage({Key? key}) : super(key: key);
+
+  void onSwipeLeft() {}
+  void onSwipeRight() {}
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +30,10 @@ class ConsPage extends StatelessWidget {
                     itemCount: state.cons.length,
                     itemBuilder: (context, index) {
                       final cons = state.cons[index];
-                      return ListTile(
-                        title: Text(cons.name),
-                      );
+                      return DismissibleCons(
+                          cons: cons,
+                          onSwipeLeft: onSwipeLeft,
+                          onSwipeRight: onSwipeRight);
                     },
                   );
                 },

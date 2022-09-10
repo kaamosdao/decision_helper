@@ -1,3 +1,4 @@
+import 'package:decision_helper/UI/widgets/dismissible_pros.dart';
 import 'package:decision_helper/UI/widgets/forms/add_pros_form.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProsPage extends StatelessWidget {
   const ProsPage({Key? key}) : super(key: key);
+
+  void onSwipeLeft() {}
+  void onSwipeRight() {}
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +30,10 @@ class ProsPage extends StatelessWidget {
                     itemCount: state.pros.length,
                     itemBuilder: (context, index) {
                       final pros = state.pros[index];
-                      return ListTile(
-                        title: Text(pros.name),
+                      return DismissiblePros(
+                        pros: pros,
+                        onSwipeLeft: onSwipeLeft,
+                        onSwipeRight: onSwipeRight,
                       );
                     },
                   );
