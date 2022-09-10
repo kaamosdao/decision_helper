@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:decision_helper/routes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddDecisionScreenForm extends StatefulWidget {
-  const AddDecisionScreenForm({Key? key}) : super(key: key);
+class AddDecisionForm extends StatefulWidget {
+  const AddDecisionForm({Key? key}) : super(key: key);
 
   @override
-  State<AddDecisionScreenForm> createState() => _AddDecisionScreenFormState();
+  State<AddDecisionForm> createState() => _AddDecisionFormState();
 }
 
-class _AddDecisionScreenFormState extends State<AddDecisionScreenForm> {
+class _AddDecisionFormState extends State<AddDecisionForm> {
   final decisionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 

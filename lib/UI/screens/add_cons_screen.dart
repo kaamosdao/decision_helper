@@ -1,5 +1,7 @@
-import 'package:decision_helper/UI/widgets/forms/add_cons_screen_form.dart';
+import 'package:decision_helper/UI/widgets/forms/add_cons_form.dart';
+import 'package:decision_helper/UI/widgets/next_button.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +21,12 @@ class AddConsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const AddConsScreenForm(),
+              const AddConsForm(autofocus: true),
+              NextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AppRoutes.result);
+                },
+              ),
               Expanded(
                 child: BlocBuilder<DecisionBloc, DecisionState>(
                   builder: (context, state) {

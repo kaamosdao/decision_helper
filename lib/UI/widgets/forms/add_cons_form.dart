@@ -1,25 +1,24 @@
-import 'package:decision_helper/UI/widgets/next_button.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
 import 'package:decision_helper/models/cons_model.dart';
 import 'package:flutter/material.dart';
-import 'package:decision_helper/routes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddConsScreenForm extends StatefulWidget {
-  const AddConsScreenForm({Key? key}) : super(key: key);
+class AddConsForm extends StatefulWidget {
+  const AddConsForm({
+    Key? key,
+    required this.autofocus,
+  }) : super(key: key);
+
+  final bool autofocus;
 
   @override
-  State<AddConsScreenForm> createState() => _AddConsScreenFormState();
+  State<AddConsForm> createState() => _AddConsFormState();
 }
 
-class _AddConsScreenFormState extends State<AddConsScreenForm> {
+class _AddConsFormState extends State<AddConsForm> {
   final consController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   late FocusNode consFocusNode;
-
-  void onPressed() {
-    Navigator.of(context).pushNamed(AppRoutes.result);
-  }
 
   void onFieldSubmitted(value) {
     final isValidForm = _formKey.currentState!.validate();
@@ -59,7 +58,7 @@ class _AddConsScreenFormState extends State<AddConsScreenForm> {
             height: 80,
             child: TextFormField(
               onFieldSubmitted: onFieldSubmitted,
-              autofocus: true,
+              autofocus: widget.autofocus,
               focusNode: consFocusNode,
               controller: consController,
               maxLength: 50,
@@ -69,9 +68,6 @@ class _AddConsScreenFormState extends State<AddConsScreenForm> {
               ),
               validator: (value) => value == '' ? 'Should not be empty' : null,
             ),
-          ),
-          NextButton(
-            onPressed: onPressed,
           ),
         ],
       ),

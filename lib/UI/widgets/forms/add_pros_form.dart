@@ -1,25 +1,24 @@
-import 'package:decision_helper/UI/widgets/next_button.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
 import 'package:decision_helper/models/pros_model.dart';
 import 'package:flutter/material.dart';
-import 'package:decision_helper/routes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddProsScreenForm extends StatefulWidget {
-  const AddProsScreenForm({Key? key}) : super(key: key);
+class AddProsForm extends StatefulWidget {
+  const AddProsForm({
+    Key? key,
+    required this.autofocus,
+  }) : super(key: key);
+
+  final bool autofocus;
 
   @override
-  State<AddProsScreenForm> createState() => _AddProsScreenFormState();
+  State<AddProsForm> createState() => _AddProsFormState();
 }
 
-class _AddProsScreenFormState extends State<AddProsScreenForm> {
+class _AddProsFormState extends State<AddProsForm> {
   final prosController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   late FocusNode prosFocusNode;
-
-  void onPressed() {
-    Navigator.of(context).pushNamed(AppRoutes.cons);
-  }
 
   void onFieldSubmitted(value) {
     final isValidForm = _formKey.currentState!.validate();
@@ -59,7 +58,7 @@ class _AddProsScreenFormState extends State<AddProsScreenForm> {
             height: 80,
             child: TextFormField(
               onFieldSubmitted: onFieldSubmitted,
-              autofocus: true,
+              autofocus: widget.autofocus,
               focusNode: prosFocusNode,
               controller: prosController,
               maxLength: 50,
@@ -69,9 +68,6 @@ class _AddProsScreenFormState extends State<AddProsScreenForm> {
               ),
               validator: (value) => value == '' ? 'Should not be empty' : null,
             ),
-          ),
-          NextButton(
-            onPressed: onPressed,
           ),
         ],
       ),
