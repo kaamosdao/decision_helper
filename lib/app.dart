@@ -1,8 +1,8 @@
 import 'package:decision_helper/bloc/decision_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:decision_helper/UI/screens/add_cons.dart';
-import 'package:decision_helper/UI/screens/add_decision.dart';
-import 'package:decision_helper/UI/screens/add_pros.dart';
+import 'package:decision_helper/UI/screens/add_cons_screen.dart';
+import 'package:decision_helper/UI/screens/add_decision_screen.dart';
+import 'package:decision_helper/UI/screens/add_pros_screen.dart';
 import 'package:decision_helper/UI/screens/result_screen.dart';
 import 'package:decision_helper/routes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
