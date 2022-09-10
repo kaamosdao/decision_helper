@@ -3,16 +3,25 @@ import 'package:flutter/material.dart';
 import 'package:decision_helper/routes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class DecisionScreenForm extends StatefulWidget {
-  const DecisionScreenForm({Key? key}) : super(key: key);
+class AddDecisionScreenForm extends StatefulWidget {
+  const AddDecisionScreenForm({Key? key}) : super(key: key);
 
   @override
-  State<DecisionScreenForm> createState() => _DecisionScreenFormState();
+  State<AddDecisionScreenForm> createState() => _AddDecisionScreenFormState();
 }
 
-class _DecisionScreenFormState extends State<DecisionScreenForm> {
+class _AddDecisionScreenFormState extends State<AddDecisionScreenForm> {
   final decisionController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  void onFieldSubmitted(value) {
+    final isValidForm = _formKey.currentState!.validate();
+    final decisionBloc = context.read<DecisionBloc>();
+    if (isValidForm) {
+      decisionBloc.add(AddDecisionEvent(decision: value));
+      Navigator.of(context).pushNamed(AppRoutes.pros);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +39,7 @@ class _DecisionScreenFormState extends State<DecisionScreenForm> {
             width: 300,
             height: 80,
             child: TextFormField(
-              onFieldSubmitted: (value) {
-                final isValidForm = _formKey.currentState!.validate();
-                final decisionBloc = context.read<DecisionBloc>();
-                if (isValidForm) {
-                  decisionBloc.add(AddDecisionEvent(decision: value));
-                  Navigator.of(context).pushNamed(AppRoutes.pros);
-                }
-              },
+              onFieldSubmitted: onFieldSubmitted,
               autofocus: true,
               controller: decisionController,
               maxLength: 50,

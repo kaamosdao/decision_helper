@@ -1,4 +1,4 @@
-import 'package:decision_helper/UI/widgets/forms/decision_screen_form.dart';
+import 'package:decision_helper/UI/widgets/forms/add_decision_screen_form.dart';
 import 'package:flutter/material.dart';
 
 class AddDecisionScreen extends StatelessWidget {
@@ -13,7 +13,7 @@ class AddDecisionScreen extends StatelessWidget {
           FocusScope.of(context).unfocus();
         },
         child: const Center(
-          child: DecisionScreenForm(),
+          child: AddDecisionScreenForm(),
         ),
       ),
     );
