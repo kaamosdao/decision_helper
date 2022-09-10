@@ -29,6 +29,11 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Decision Helper'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
       body: BodyPageView(
         onPageChanged: onPageChanged,
         pageController: _pageController,
