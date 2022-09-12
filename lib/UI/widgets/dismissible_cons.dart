@@ -1,5 +1,7 @@
 import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/generate_id.dart';
 import 'package:decision_helper/models/cons_model.dart';
+import 'package:decision_helper/models/pros_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +19,8 @@ class DismissibleCons extends StatelessWidget {
 
   void onSwipeRight(Cons cons, DecisionBloc bloc) {
     bloc.add(RemoveConsEvent(cons: cons));
+    Pros newPros = Pros(name: cons.name, id: generateId());
+    bloc.add(AddProsEvent(pros: newPros));
   }
 
   @override
