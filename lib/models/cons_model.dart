@@ -2,8 +2,12 @@ import 'package:equatable/equatable.dart';
 
 class Cons extends Equatable {
   final String name;
-  const Cons({required this.name});
+  final String id;
+  const Cons({
+    required this.name,
+    required this.id,
+  });
 
   @override
-  List<Object> get props => [name];
+  List<Object> get props => [name, id];
 }

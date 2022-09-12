@@ -7,9 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ProsPage extends StatelessWidget {
   const ProsPage({Key? key}) : super(key: key);
 
-  void onSwipeLeft() {}
-  void onSwipeRight() {}
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,11 +27,7 @@ class ProsPage extends StatelessWidget {
                     itemCount: state.pros.length,
                     itemBuilder: (context, index) {
                       final pros = state.pros[index];
-                      return DismissiblePros(
-                        pros: pros,
-                        onSwipeLeft: onSwipeLeft,
-                        onSwipeRight: onSwipeRight,
-                      );
+                      return DismissiblePros(pros: pros);
                     },
                   );
                 },

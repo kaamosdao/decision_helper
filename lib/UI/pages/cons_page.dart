@@ -7,9 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ConsPage extends StatelessWidget {
   const ConsPage({Key? key}) : super(key: key);
 
-  void onSwipeLeft() {}
-  void onSwipeRight() {}
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,10 +27,7 @@ class ConsPage extends StatelessWidget {
                     itemCount: state.cons.length,
                     itemBuilder: (context, index) {
                       final cons = state.cons[index];
-                      return DismissibleCons(
-                          cons: cons,
-                          onSwipeLeft: onSwipeLeft,
-                          onSwipeRight: onSwipeRight);
+                      return DismissibleCons(cons: cons);
                     },
                   );
                 },

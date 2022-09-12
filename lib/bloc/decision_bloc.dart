@@ -22,5 +22,17 @@ class DecisionBloc extends Bloc<DecisionEvent, DecisionState> {
         ..insert(0, event.cons);
       emit(state.copyWith(cons: newConsList));
     });
+    on<RemoveProsEvent>((event, emit) {
+      final removedId = event.pros.id;
+      final List<Pros> newProsList = List.from(state.pros)
+        ..removeWhere((pros) => pros.id == removedId);
+      emit(state.copyWith(pros: newProsList));
+    });
+    on<RemoveConsEvent>((event, emit) {
+      final removedId = event.cons.id;
+      final List<Cons> newConsList = List.from(state.cons)
+        ..removeWhere((cons) => cons.id == removedId);
+      emit(state.copyWith(cons: newConsList));
+    });
   }
 }

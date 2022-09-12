@@ -30,3 +30,19 @@ class AddConsEvent extends DecisionEvent {
   @override
   List<Object> get props => [cons];
 }
+
+class RemoveProsEvent extends DecisionEvent {
+  final Pros pros;
+  const RemoveProsEvent({required this.pros});
+
+  @override
+  List<Object> get props => [pros];
+}
+
+class RemoveConsEvent extends DecisionEvent {
+  final Cons cons;
+  const RemoveConsEvent({required this.cons});
+
+  @override
+  List<Object> get props => [cons];
+}

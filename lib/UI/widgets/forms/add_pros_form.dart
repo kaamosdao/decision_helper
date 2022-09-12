@@ -1,4 +1,5 @@
 import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/generate_id.dart';
 import 'package:decision_helper/models/pros_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +25,7 @@ class _AddProsFormState extends State<AddProsForm> {
     final isValidForm = _formKey.currentState!.validate();
     if (isValidForm) {
       final decisionBloc = context.read<DecisionBloc>();
-      decisionBloc.add(AddProsEvent(pros: Pros(name: value)));
+      decisionBloc.add(AddProsEvent(pros: Pros(name: value, id: generateId())));
       prosController.clear();
     }
     prosFocusNode.requestFocus();

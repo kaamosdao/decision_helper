@@ -1,26 +1,33 @@
+import 'package:decision_helper/bloc/decision_bloc.dart';
 import 'package:decision_helper/models/cons_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DismissibleCons extends StatelessWidget {
+  final Cons cons;
+
   const DismissibleCons({
     Key? key,
     required this.cons,
-    required this.onSwipeLeft,
-    required this.onSwipeRight,
   }) : super(key: key);
 
-  final Cons cons;
-  final Function onSwipeLeft;
-  final Function onSwipeRight;
+  void onSwipeLeft(Cons cons, DecisionBloc bloc) {
+    bloc.add(RemoveConsEvent(cons: cons));
+  }
+
+  void onSwipeRight(Cons cons, DecisionBloc bloc) {
+    bloc.add(RemoveConsEvent(cons: cons));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Dismissible(
       key: ObjectKey(cons),
       onDismissed: (direction) {
+        final decisionBloc = BlocProvider.of<DecisionBloc>(context);
         switch (direction) {
           case DismissDirection.startToEnd:
-            onSwipeRight();
+            onSwipeRight(cons, decisionBloc);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('Moved to Cons'),
@@ -28,7 +35,7 @@ class DismissibleCons extends StatelessWidget {
             );
             break;
           case DismissDirection.endToStart:
-            onSwipeLeft();
+            onSwipeLeft(cons, decisionBloc);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
                 content: Text('Removed'),
