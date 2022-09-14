@@ -21,13 +21,6 @@ class ProsPage extends StatelessWidget {
             padding: EdgeInsets.only(top: 150, left: 50, right: 50),
             child: AddProsForm(autofocus: false),
           ),
-          // const SizedBox(height: 25),
-          // const Text(
-          //   'Decision pros',
-          //   style: TextStyle(
-          //     fontSize: 18,
-          //   ),
-          // ),
           const SizedBox(height: 25),
           Expanded(
             child: Padding(

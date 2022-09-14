@@ -61,12 +61,12 @@ class DismissibleCons extends StatelessWidget {
           ),
         ),
         background: Container(
-          color: Colors.green,
+          color: const Color.fromARGB(31, 7, 74, 119),
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 15),
           child: const Icon(
             Icons.drive_file_move_rtl_rounded,
-            color: Colors.white,
+            color: Color.fromARGB(255, 99, 217, 238),
           ),
         ),
         child: ListTile(
@@ -78,7 +78,7 @@ class DismissibleCons extends StatelessWidget {
             child: const Icon(
               Icons.remove,
               size: 15,
-              color: Color.fromARGB(255, 236, 93, 93),
+              color: Color.fromARGB(255, 236, 120, 240),
             ),
           ),
         ),

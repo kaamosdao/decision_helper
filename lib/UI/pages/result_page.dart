@@ -58,8 +58,8 @@ class ResultPage extends StatelessWidget {
                   ),
                 ],
                 palette: const <Color>[
-                  Color.fromARGB(255, 69, 179, 96),
-                  Color.fromARGB(255, 236, 93, 93),
+                  Color.fromARGB(255, 99, 217, 238),
+                  Color.fromARGB(255, 236, 120, 240),
                 ],
               );
             },
