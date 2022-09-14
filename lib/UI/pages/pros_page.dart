@@ -14,30 +14,48 @@ class ProsPage extends StatelessWidget {
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 150, left: 50, right: 50),
-            child: AddProsForm(autofocus: false),
-          ),
-          const SizedBox(height: 25),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: BlocBuilder<DecisionBloc, DecisionState>(
-                builder: (context, state) {
-                  return ListView.builder(
-                    itemCount: state.pros.length,
-                    itemBuilder: (context, index) {
-                      final pros = state.pros[index];
-                      return DismissiblePros(pros: pros);
-                    },
-                  );
-                },
+      child: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            toolbarHeight: 150,
+            expandedHeight: 200,
+            pinned: true,
+            automaticallyImplyLeading: false,
+            title: Padding(
+              padding: EdgeInsets.all(25),
+              child: AddProsForm(autofocus: false),
+            ),
+            flexibleSpace: FlexibleSpaceBar(
+              stretchModes: <StretchMode>[
+                StretchMode.fadeTitle,
+              ],
+              centerTitle: true,
+              expandedTitleScale: 1.5,
+              title: Text(
+                'Your pros here',
+                style: TextStyle(color: Colors.black, fontSize: 12),
               ),
+              // background: AddProsForm(autofocus: false),
             ),
           ),
+          // const SizedBox(height: 25),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                BlocBuilder<DecisionBloc, DecisionState>(
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        ...(state.pros
+                                .map((pros) => DismissiblePros(pros: pros)))
+                            .toList()
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
