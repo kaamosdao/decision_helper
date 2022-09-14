@@ -71,6 +71,16 @@ class DismissiblePros extends StatelessWidget {
         ),
         child: ListTile(
           title: Text(pros.name),
+          minLeadingWidth: 10,
+          leading: Container(
+            width: 15,
+            alignment: Alignment.centerLeft,
+            child: const Icon(
+              Icons.add,
+              size: 15,
+              color: Color.fromARGB(255, 69, 179, 96),
+            ),
+          ),
         ),
       ),
     );

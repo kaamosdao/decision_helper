@@ -21,6 +21,7 @@ class ConsPage extends StatelessWidget {
             padding: EdgeInsets.only(top: 150, left: 50, right: 50),
             child: AddConsForm(autofocus: false),
           ),
+          const SizedBox(height: 25),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),

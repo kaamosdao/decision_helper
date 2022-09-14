@@ -71,6 +71,16 @@ class DismissibleCons extends StatelessWidget {
         ),
         child: ListTile(
           title: Text(cons.name),
+          minLeadingWidth: 10,
+          leading: Container(
+            width: 15,
+            alignment: Alignment.centerLeft,
+            child: const Icon(
+              Icons.remove,
+              size: 15,
+              color: Color.fromARGB(255, 236, 93, 93),
+            ),
+          ),
         ),
       ),
     );
