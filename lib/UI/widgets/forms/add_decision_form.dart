@@ -31,7 +31,6 @@ class _AddDecisionFormState extends State<AddDecisionForm> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text('type your decision here'),
           const SizedBox(
             height: 20,
           ),
@@ -45,7 +44,15 @@ class _AddDecisionFormState extends State<AddDecisionForm> {
               maxLength: 50,
               decoration: const InputDecoration(
                 labelText: 'Decision',
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                    width: 1,
+                  ),
+                ),
               ),
               validator: (value) => value == '' ? 'Should not be empty' : null,
             ),

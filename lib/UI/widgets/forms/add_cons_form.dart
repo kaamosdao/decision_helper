@@ -50,7 +50,6 @@ class _AddConsFormState extends State<AddConsForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('type your cons here'),
           const SizedBox(
             height: 20,
           ),
@@ -66,6 +65,12 @@ class _AddConsFormState extends State<AddConsForm> {
               decoration: const InputDecoration(
                 labelText: 'Cons',
                 border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                    width: 1,
+                  ),
+                ),
               ),
               validator: (value) => value == '' ? 'Should not be empty' : null,
             ),

@@ -50,7 +50,6 @@ class _AddProsFormState extends State<AddProsForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('type your pros here'),
           const SizedBox(
             height: 20,
           ),
@@ -66,6 +65,12 @@ class _AddProsFormState extends State<AddProsForm> {
               decoration: const InputDecoration(
                 labelText: 'Pros',
                 border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                    width: 1,
+                  ),
+                ),
               ),
               validator: (value) => value == '' ? 'Should not be empty' : null,
             ),
