@@ -14,13 +14,24 @@ class ProsPage extends StatelessWidget {
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 150, left: 50, right: 50),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const AddProsForm(autofocus: false),
-            Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 150, left: 50, right: 50),
+            child: AddProsForm(autofocus: false),
+          ),
+          // const SizedBox(height: 25),
+          // const Text(
+          //   'Decision pros',
+          //   style: TextStyle(
+          //     fontSize: 18,
+          //   ),
+          // ),
+          const SizedBox(height: 25),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: BlocBuilder<DecisionBloc, DecisionState>(
                 builder: (context, state) {
                   return ListView.builder(
@@ -33,8 +44,8 @@ class ProsPage extends StatelessWidget {
                 },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

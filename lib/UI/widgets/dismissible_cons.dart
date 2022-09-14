@@ -25,51 +25,53 @@ class DismissibleCons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: ObjectKey(cons),
-      onDismissed: (direction) {
-        final decisionBloc = BlocProvider.of<DecisionBloc>(context);
-        switch (direction) {
-          case DismissDirection.startToEnd:
-            onSwipeRight(cons, decisionBloc);
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Moved to Cons'),
-              ),
-            );
-            break;
-          case DismissDirection.endToStart:
-            onSwipeLeft(cons, decisionBloc);
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Removed'),
-              ),
-            );
-            break;
-          default:
-            break;
-        }
-      },
-      secondaryBackground: Container(
-        color: Colors.red,
-        alignment: Alignment.centerRight,
-        padding: const EdgeInsets.only(right: 15),
-        child: const Icon(
-          Icons.delete,
-          color: Colors.white,
+    return Card(
+      child: Dismissible(
+        key: ObjectKey(cons),
+        onDismissed: (direction) {
+          final decisionBloc = BlocProvider.of<DecisionBloc>(context);
+          switch (direction) {
+            case DismissDirection.startToEnd:
+              onSwipeRight(cons, decisionBloc);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Moved to Cons'),
+                ),
+              );
+              break;
+            case DismissDirection.endToStart:
+              onSwipeLeft(cons, decisionBloc);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Removed'),
+                ),
+              );
+              break;
+            default:
+              break;
+          }
+        },
+        secondaryBackground: Container(
+          color: Colors.red,
+          alignment: Alignment.centerRight,
+          padding: const EdgeInsets.only(right: 15),
+          child: const Icon(
+            Icons.delete,
+            color: Colors.white,
+          ),
         ),
-      ),
-      background: Container(
-        color: Colors.green,
-        alignment: Alignment.centerLeft,
-        padding: const EdgeInsets.only(left: 15),
-        child: const Icon(
-          Icons.drive_file_move_rtl_rounded,
-          color: Colors.white,
+        background: Container(
+          color: Colors.green,
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.only(left: 15),
+          child: const Icon(
+            Icons.drive_file_move_rtl_rounded,
+            color: Colors.white,
+          ),
         ),
-      ),
-      child: ListTile(
-        title: Text(cons.name),
+        child: ListTile(
+          title: Text(cons.name),
+        ),
       ),
     );
   }

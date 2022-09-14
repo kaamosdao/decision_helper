@@ -14,13 +14,16 @@ class ConsPage extends StatelessWidget {
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child: Padding(
-        padding: const EdgeInsets.only(top: 150, left: 50, right: 50),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const AddConsForm(autofocus: false),
-            Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 150, left: 50, right: 50),
+            child: AddConsForm(autofocus: false),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
               child: BlocBuilder<DecisionBloc, DecisionState>(
                 builder: (context, state) {
                   return ListView.builder(
@@ -33,8 +36,8 @@ class ConsPage extends StatelessWidget {
                 },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
