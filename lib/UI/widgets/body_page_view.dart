@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:decision_helper/UI/pages/cons_page.dart';
 import 'package:decision_helper/UI/pages/pros_page.dart';
-import 'package:decision_helper/UI/pages/result_page.dart';
+import 'package:decision_helper/UI/pages/diagram_page.dart';
 
 class BodyPageView extends StatelessWidget {
   final void Function(int) onPageChanged;
@@ -18,7 +18,7 @@ class BodyPageView extends StatelessWidget {
       controller: pageController,
       onPageChanged: onPageChanged,
       children: const [
-        ResultPage(),
+        DiagramPage(),
         ProsPage(),
         ConsPage(),
       ],

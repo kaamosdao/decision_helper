@@ -70,6 +70,9 @@ class DismissiblePros extends StatelessWidget {
           ),
         ),
         child: ListTile(
+          // onLongPress: () {
+          //   debugPrint(pros.id);
+          // },
           title: Text(pros.name),
           minLeadingWidth: 10,
           leading: Container(

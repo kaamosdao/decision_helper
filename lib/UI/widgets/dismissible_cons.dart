@@ -70,6 +70,9 @@ class DismissibleCons extends StatelessWidget {
           ),
         ),
         child: ListTile(
+          // onLongPress: () {
+          //   debugPrint(cons.id);
+          // },
           title: Text(cons.name),
           minLeadingWidth: 10,
           leading: Container(

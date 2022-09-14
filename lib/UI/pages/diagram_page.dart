@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class ResultPage extends StatelessWidget {
-  const ResultPage({Key? key}) : super(key: key);
+class DiagramPage extends StatelessWidget {
+  const DiagramPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
