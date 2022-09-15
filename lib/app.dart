@@ -19,6 +19,7 @@ class App extends StatelessWidget {
         title: 'Decision Helper',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          fontFamily: 'Catamaran',
         ),
         routes: {
           AppRoutes.decision: (context) => const AddDecisionScreen(),

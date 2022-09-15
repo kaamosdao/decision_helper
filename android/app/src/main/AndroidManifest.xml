@@ -3,7 +3,7 @@
    <application
         android:label="decision_helper"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/decision_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"

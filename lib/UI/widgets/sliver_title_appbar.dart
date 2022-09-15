@@ -30,9 +30,10 @@ class SliverTitleAppbar extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w300),
+                color: Colors.black,
+                fontSize: 15,
+                fontWeight: FontWeight.w300,
+              ),
             ),
             const SizedBox(width: 5),
             Icon(
