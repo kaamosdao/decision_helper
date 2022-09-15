@@ -1,6 +1,9 @@
 import 'package:decision_helper/UI/widgets/dismissible_pros.dart';
 import 'package:decision_helper/UI/widgets/forms/add_pros_form.dart';
+import 'package:decision_helper/UI/widgets/sliver_form_appbar.dart';
+import 'package:decision_helper/UI/widgets/sliver_title_appbar.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/models/prosandcons_type_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,29 +19,11 @@ class ProsPage extends StatelessWidget {
       },
       child: CustomScrollView(
         slivers: [
-          const SliverAppBar(
-            toolbarHeight: 150,
-            expandedHeight: 200,
-            pinned: true,
-            automaticallyImplyLeading: false,
-            title: Padding(
-              padding: EdgeInsets.all(25),
-              child: AddProsForm(autofocus: false),
-            ),
-            flexibleSpace: FlexibleSpaceBar(
-              stretchModes: <StretchMode>[
-                StretchMode.fadeTitle,
-              ],
-              centerTitle: true,
-              expandedTitleScale: 1.5,
-              title: Text(
-                'Your pros here',
-                style: TextStyle(color: Colors.black, fontSize: 12),
-              ),
-              // background: AddProsForm(autofocus: false),
-            ),
+          const SliverFormAppbar(form: AddProsForm(autofocus: false)),
+          const SliverTitleAppbar(
+            title: 'Decision pros',
+            type: ProsAndConsType.pros,
           ),
-          // const SizedBox(height: 25),
           SliverList(
             delegate: SliverChildListDelegate(
               [

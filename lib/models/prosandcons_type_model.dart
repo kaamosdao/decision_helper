@@ -1,0 +1,1 @@
+enum ProsAndConsType { pros, cons }
