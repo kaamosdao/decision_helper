@@ -1,6 +1,9 @@
 import 'package:decision_helper/UI/widgets/dismissible_cons.dart';
 import 'package:decision_helper/UI/widgets/forms/add_cons_form.dart';
+import 'package:decision_helper/UI/widgets/sliver_form_appbar.dart';
+import 'package:decision_helper/UI/widgets/sliver_title_appbar.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/models/prosandcons_type_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,28 +17,28 @@ class ConsPage extends StatelessWidget {
       onTap: () {
         FocusScope.of(context).unfocus();
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 150, left: 50, right: 50),
-            child: AddConsForm(autofocus: false),
+      child: CustomScrollView(
+        slivers: [
+          const SliverFormAppbar(form: AddConsForm(autofocus: false)),
+          const SliverTitleAppbar(
+            title: 'Decision cons',
+            type: ProsAndConsType.cons,
           ),
-          const SizedBox(height: 25),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: BlocBuilder<DecisionBloc, DecisionState>(
-                builder: (context, state) {
-                  return ListView.builder(
-                    itemCount: state.cons.length,
-                    itemBuilder: (context, index) {
-                      final cons = state.cons[index];
-                      return DismissibleCons(cons: cons);
-                    },
-                  );
-                },
-              ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                BlocBuilder<DecisionBloc, DecisionState>(
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        ...(state.cons
+                                .map((cons) => DismissibleCons(cons: cons)))
+                            .toList()
+                      ],
+                    );
+                  },
+                ),
+              ],
             ),
           ),
         ],
