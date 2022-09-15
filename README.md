@@ -1,16 +1,22 @@
-# decision_helper
+# Decision Helper
 
-A new Flutter project.
+An app, that help you to make right decision. Add all pros and cons and then app will create a pie chart, which illustrate numerical proportion of pros and cons.
+#
+## Requirments:
+- Dart
+- Flutter
+- Android Studio with mobile emulators
+- Make utility
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation:
+```
+$ make install
+```
+## Run app:
+```
+$ make run
+```
+## Create build:
+```
+$ make build
+```
