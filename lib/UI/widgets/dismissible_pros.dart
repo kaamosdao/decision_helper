@@ -1,7 +1,9 @@
+import 'package:decision_helper/UI/widgets/list_item.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
 import 'package:decision_helper/generate_id.dart';
 import 'package:decision_helper/models/cons_model.dart';
 import 'package:decision_helper/models/pros_model.dart';
+import 'package:decision_helper/models/prosandcons_type_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -69,22 +71,7 @@ class DismissiblePros extends StatelessWidget {
             color: Color.fromARGB(255, 236, 120, 240),
           ),
         ),
-        child: ListTile(
-          // onLongPress: () {
-          //   debugPrint(pros.id);
-          // },
-          title: Text(pros.name),
-          minLeadingWidth: 10,
-          leading: Container(
-            width: 15,
-            alignment: Alignment.centerLeft,
-            child: const Icon(
-              Icons.add,
-              size: 15,
-              color: Color.fromARGB(255, 99, 217, 238),
-            ),
-          ),
-        ),
+        child: ListItem(title: pros.name, type: ProsAndConsType.pros),
       ),
     );
   }

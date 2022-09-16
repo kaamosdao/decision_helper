@@ -1,6 +1,8 @@
 import 'package:decision_helper/UI/widgets/forms/add_cons_form.dart';
+import 'package:decision_helper/UI/widgets/list_item.dart';
 import 'package:decision_helper/UI/widgets/next_button.dart';
 import 'package:decision_helper/bloc/decision_bloc.dart';
+import 'package:decision_helper/models/prosandcons_type_model.dart';
 import 'package:decision_helper/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,34 +18,50 @@ class AddConsScreen extends StatelessWidget {
         onTap: () {
           FocusScope.of(context).unfocus();
         },
-        child: Padding(
-          padding: const EdgeInsets.only(top: 250, left: 50, right: 50),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const AddConsForm(autofocus: true),
-              NextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(AppRoutes.result);
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 250, left: 50, right: 50),
+              child: AddConsForm(autofocus: true),
+            ),
+            NextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.result);
+              },
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 25),
+              child: Text(
+                'Added cons:',
+                style: TextStyle(fontSize: 17),
+              ),
+            ),
+            Expanded(
+              child: BlocBuilder<DecisionBloc, DecisionState>(
+                builder: (context, state) {
+                  final consLength = state.cons.length;
+                  if (consLength == 0) {
+                    return const Text(
+                      'There is no cons yet..',
+                      style: TextStyle(fontSize: 14),
+                    );
+                  }
+                  return ListView.builder(
+                    itemCount: consLength,
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    itemBuilder: (context, index) {
+                      final pros = state.pros[index];
+                      return Card(
+                        child: ListItem(
+                            title: pros.name, type: ProsAndConsType.cons),
+                      );
+                    },
+                  );
                 },
               ),
-              Expanded(
-                child: BlocBuilder<DecisionBloc, DecisionState>(
-                  builder: (context, state) {
-                    return ListView.builder(
-                      itemCount: state.cons.length,
-                      itemBuilder: (context, index) {
-                        final cons = state.cons[index];
-                        return ListTile(
-                          title: Text(cons.name),
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
