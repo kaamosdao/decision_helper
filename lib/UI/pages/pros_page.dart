@@ -29,6 +29,18 @@ class ProsPage extends StatelessWidget {
               [
                 BlocBuilder<DecisionBloc, DecisionState>(
                   builder: (context, state) {
+                    final prosLength = state.pros.length;
+                    if (prosLength == 0) {
+                      return const Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 25),
+                          child: Text(
+                            'There is no pros yet..',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        ),
+                      );
+                    }
                     return Column(
                       children: [
                         ...(state.pros

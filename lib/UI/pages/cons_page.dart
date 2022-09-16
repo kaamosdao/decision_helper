@@ -29,6 +29,18 @@ class ConsPage extends StatelessWidget {
               [
                 BlocBuilder<DecisionBloc, DecisionState>(
                   builder: (context, state) {
+                    final consLength = state.cons.length;
+                    if (consLength == 0) {
+                      return const Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 25),
+                          child: Text(
+                            'There is no cons yet..',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        ),
+                      );
+                    }
                     return Column(
                       children: [
                         ...(state.cons
