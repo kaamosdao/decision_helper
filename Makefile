@@ -7,4 +7,4 @@ run:
 lint:
 	flutter analyze
 runtest:
-	flutter test integration_test
+	flutter run integration_test/main_test.dart

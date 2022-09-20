@@ -32,7 +32,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Should not be empty'), findsOneWidget);
 
-    await tester.enterText(find.byType(TextFormField), 'can travel');
+    await tester.enterText(find.byType(TextFormField), 'can travel anywhere');
     await tester.testTextInput.receiveAction(TextInputAction.done);
     await tester.pumpAndSettle();
     expect(find.text('can travel'), findsOneWidget);
@@ -60,7 +60,7 @@ void main() {
     await tester.enterText(find.byType(TextFormField), 'expensive gas');
     await tester.testTextInput.receiveAction(TextInputAction.done);
     await tester.pumpAndSettle();
-    expect(find.text('comfort'), findsOneWidget);
+    expect(find.text('expensive gas'), findsOneWidget);
 
     await tester.tap(find.byType(NextButton));
     await tester.pumpAndSettle();

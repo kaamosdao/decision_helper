@@ -51,10 +51,10 @@ class AddConsScreen extends StatelessWidget {
                     itemCount: consLength,
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     itemBuilder: (context, index) {
-                      final pros = state.pros[index];
+                      final cons = state.cons[index];
                       return Card(
                         child: ListItem(
-                            title: pros.name, type: ProsAndConsType.cons),
+                            title: cons.name, type: ProsAndConsType.cons),
                       );
                     },
                   );
