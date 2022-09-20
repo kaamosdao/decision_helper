@@ -40,6 +40,8 @@ dependencies:
   syncfusion_flutter_charts: ^20.2.49
   
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
 

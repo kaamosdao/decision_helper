@@ -6,3 +6,5 @@ run:
 	flutter run lib/main.dart
 lint:
 	flutter analyze
+runtest:
+	flutter test integration_test
