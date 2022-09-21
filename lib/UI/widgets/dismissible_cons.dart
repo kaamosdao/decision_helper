@@ -37,7 +37,7 @@ class DismissibleCons extends StatelessWidget {
               onSwipeRight(cons, decisionBloc);
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Moved to Cons'),
+                  content: Text('Moved to Pros'),
                 ),
               );
               break;
