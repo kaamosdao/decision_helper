@@ -1,8 +1,9 @@
 name: Integration test
 
 on:
-  - push 
+  - push
 
+jobs:
   android:
     runs-on: ubuntu-latest
     strategy:
