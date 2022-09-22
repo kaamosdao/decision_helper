@@ -8,7 +8,6 @@ import 'package:decision_helper/main.dart' as app;
 import 'package:decision_helper/UI/widgets/forms/add_pros_form.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-
 addItemToList(itemsCount, tester) async {
   await tester.tap(find.byType(TextField));
   for (var i = 1; i <= itemsCount; i++) {
@@ -160,7 +159,7 @@ void main() {
 
     //hideKeyboard
     await hideKeyboard(find.text('Decision pros'), tester);
-  
+
     await tester.drag(
       find.text('pros to be moved to cons'),
       const Offset(500.0, 0.0),

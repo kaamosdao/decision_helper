@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        api-level: [30]
+        api-level: [31]
 
     steps:
       - uses: actions/checkout@v3
@@ -26,4 +26,5 @@ jobs:
           api-level: ${{ matrix.api-level }}
           arch: x86_64
           profile: Nexus 6
-          script: flutter test integration_test --verbose
+          script: flutter test integration_test
+          

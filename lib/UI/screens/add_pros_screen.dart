@@ -30,14 +30,18 @@ class AddProsScreen extends StatelessWidget {
                 Navigator.of(context).pushNamed(AppRoutes.cons);
               },
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 25),
-              child: Text(
-                'Added pros:',
-                style: TextStyle(fontSize: 17),
+            const Expanded(
+              flex: 1,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 25),
+                child: Text(
+                  'Added pros:',
+                  style: TextStyle(fontSize: 17),
+                ),
               ),
             ),
             Expanded(
+              flex: 3,
               child: BlocBuilder<DecisionBloc, DecisionState>(
                 builder: (context, state) {
                   final prosLength = state.pros.length;

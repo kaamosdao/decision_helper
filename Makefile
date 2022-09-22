@@ -7,4 +7,4 @@ run:
 lint:
 	flutter analyze
 runtest:
-	flutter run integration_test/main_test.dart --verbose
+	flutter run integration_test/main_test.dart
