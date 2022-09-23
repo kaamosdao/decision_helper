@@ -6,6 +6,8 @@ class AddDecisionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(MediaQuery.of(context).size.width.toString());
+    debugPrint(MediaQuery.of(context).size.height.toString());
     return Scaffold(
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,

@@ -18,31 +18,27 @@ class AddConsScreen extends StatelessWidget {
         onTap: () {
           FocusScope.of(context).unfocus();
         },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 250, left: 50, right: 50),
-              child: AddConsForm(autofocus: true),
-            ),
-            NextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.result);
-              },
-            ),
-            const Expanded(
-              flex: 1,
-              child: Padding(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(top: 250, left: 50, right: 50),
+                child: AddConsForm(autofocus: true),
+              ),
+              NextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AppRoutes.result);
+                },
+              ),
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 25),
                 child: Text(
                   'Added cons:',
                   style: TextStyle(fontSize: 17),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 3,
-              child: BlocBuilder<DecisionBloc, DecisionState>(
+              BlocBuilder<DecisionBloc, DecisionState>(
                 builder: (context, state) {
                   final consLength = state.cons.length;
                   if (consLength == 0) {
@@ -51,21 +47,24 @@ class AddConsScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 14),
                     );
                   }
-                  return ListView.builder(
-                    itemCount: consLength,
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    itemBuilder: (context, index) {
-                      final cons = state.cons[index];
-                      return Card(
-                        child: ListItem(
-                            title: cons.name, type: ProsAndConsType.cons),
-                      );
-                    },
+                  return SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                      itemCount: consLength,
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      itemBuilder: (context, index) {
+                        final cons = state.cons[index];
+                        return Card(
+                          child: ListItem(
+                              title: cons.name, type: ProsAndConsType.cons),
+                        );
+                      },
+                    ),
                   );
                 },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

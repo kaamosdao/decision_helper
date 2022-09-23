@@ -38,6 +38,7 @@ class DismissibleCons extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Moved to Pros'),
+                  duration: Duration(seconds: 3),
                 ),
               );
               break;
@@ -46,6 +47,7 @@ class DismissibleCons extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Removed'),
+                  duration: Duration(seconds: 3),
                 ),
               );
               break;

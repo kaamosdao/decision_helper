@@ -90,28 +90,28 @@ void main() {
 
     await tester.drag(
       find.text('cons to be moved to pros'),
-      const Offset(500.0, 0.0),
+      const Offset(400.0, 0.0),
     );
     await tester.pumpAndSettle();
     expect(find.text('cons to be moved to pros'), findsNothing);
     expect(find.text('Moved to Pros'), findsOneWidget);
     await tester.drag(
       find.text('Moved to Pros'),
-      const Offset(0.0, 500.0),
+      const Offset(0.0, 400.0),
     );
     await tester.pumpAndSettle();
     expect(find.text('Moved to Pros'), findsNothing);
 
     await tester.drag(
       find.text('cons for deleting'),
-      const Offset(-500.0, 0.0),
+      const Offset(-400.0, 0.0),
     );
     await tester.pumpAndSettle();
     expect(find.text('cons for deleting'), findsNothing);
     expect(find.text('Removed'), findsOneWidget);
     await tester.drag(
       find.text('Removed'),
-      const Offset(0.0, 500.0),
+      const Offset(0.0, 400.0),
     );
     await tester.pumpAndSettle();
     expect(find.text('Removed'), findsNothing);
@@ -141,7 +141,7 @@ void main() {
 
     await tester.drag(
       find.text('Decision cons'),
-      const Offset(500.0, 0.0),
+      const Offset(400.0, 0.0),
     );
     await tester.pumpAndSettle();
 
@@ -162,28 +162,28 @@ void main() {
 
     await tester.drag(
       find.text('pros to be moved to cons'),
-      const Offset(500.0, 0.0),
+      const Offset(400.0, 0.0),
     );
     await tester.pumpAndSettle();
     expect(find.text('pros to be moved to cons'), findsNothing);
     expect(find.text('Moved to Cons'), findsOneWidget);
     await tester.drag(
       find.text('Moved to Cons'),
-      const Offset(0.0, 500.0),
+      const Offset(0.0, 400.0),
     );
     await tester.pumpAndSettle();
     expect(find.text('Moved to Cons'), findsNothing);
 
     await tester.drag(
       find.text('pros for deleting'),
-      const Offset(-500.0, 0.0),
+      const Offset(-400.0, 0.0),
     );
     await tester.pumpAndSettle();
     expect(find.text('pros for deleting'), findsNothing);
     expect(find.text('Removed'), findsOneWidget);
     await tester.drag(
       find.text('Removed'),
-      const Offset(0.0, 500.0),
+      const Offset(0.0, 400.0),
     );
     await tester.pumpAndSettle();
     expect(find.text('Removed'), findsNothing);
@@ -213,7 +213,7 @@ void main() {
 
     await tester.drag(
       find.text('Decision pros'),
-      const Offset(500.0, 0.0),
+      const Offset(400.0, 0.0),
     );
     await tester.pumpAndSettle();
   });
