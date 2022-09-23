@@ -19,5 +19,5 @@ $ make run
 ```
 ## Create build:
 ```
-$ make build
+$ make runbuild
 ```

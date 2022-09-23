@@ -1,6 +1,6 @@
 install:
 	dart pub get
-build:
+runbuild:
 	flutter build apk
 run:
 	flutter run lib/main.dart
