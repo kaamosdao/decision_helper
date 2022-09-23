@@ -1,5 +1,5 @@
 install:
-	dart pub get
+	flutter pub get
 runbuild:
 	flutter build apk
 run:
